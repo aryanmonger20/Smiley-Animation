@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title> Eye Ball Move </title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+
+    <style>
+    {
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #40bad5;
+    
+    
+}
+.face
+{
+    position: relative;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: #ffcd00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+.face::before
+{
+    content: '';
+    position: absolute;
+    top: 180px;
+    width: 140px;
+    height: 74px;
+    background: #40bad5;
+    border-bottom-left-radius: 70px;
+    border-bottom-right-radius: 70px;
+    transition: 0.5s;
+    
+    
+}
+.face:hover::before
+{
+    top: 220px;
+    width: 100px;
+    height: 10px;
+    background: #40bad5;
+    border-bottom-left-radius: 70px;
+    border-bottom-right-radius: 70px;
+    transition: 0.5s;
+    
+}
+.eyes
+{
+    position: relative;
+    top: 0;
+    display: flex;
+    
+}
+.eyes .eye
+{
+    position:relative;
+    top: -35px;
+    width: 75px;
+    height:75px;
+    display: block;
+    background: #fff;
+    margin: 0 014px;
+    border-radius: 50%;
+    justify-content: center;
+    
+}
+.eyes .eye::before
+{
+    content: '';
+    position: absolute;
+    top:50%;
+    left:25px;
+    transform: translate(-50%,-50%);
+    width: 35px;
+    height: 35px;
+    background: #333;
+    border-radius: 50%;
+}
+        </style>
+</head>
+
+<body>
+    
+    <header class="topV"></header>
+    <div class ="face">
+      <div class ="eyes">
+          <div class="eye"> </div>
+           <div class="eye"> </div>
+</div> 
+</div>
+
+
+
+	<main></main>
+	<footer></footer>
+	<script >
+    document.querySelector('body')
+        .addEventListener('mousemove',eyeball);
+        function eyeball(){
+            var eye =document.querySelectorAll('.eye');
+            eye.forEach(function(eye){
+                    let x=(eye.getBoundingClientRect().left)+(eye.clientWidth/2);
+                 let y=(eye.getBoundingClientRect().top)+(eye.clientHeight/2);
+                
+                let radian = Math.atan2(event.pageX- x,event.pageY-y);
+                
+                let rot = (radian * (180/ Math.PI) * -1)+270;
+                eye.style.transform = "rotate("+ rot +"deg)";
+                        
+                        
+                        
+                        })
+            
+        }
+    
+    
+    </script>
+</body>
+
+</html>
